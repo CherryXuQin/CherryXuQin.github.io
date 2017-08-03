@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>create_blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="打造自己的独立博客一：安装Hexo高效的博客框架，用markdown（轻量级标记语言）解析文章，输出美观的静态页面，安装环境：node.js和git1.检查mac是否安装好node.js和git（1） 打开终端node -vv7.10.0git —version2.5.4 (2) 使用npm(js包管理工具)下载Hexonpm install -g hexo-cli下载出错：checkPermis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="create_blog">
+<meta property="og:url" content="http://yoursite.com/2017/08/02/create_blog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="打造自己的独立博客一：安装Hexo高效的博客框架，用markdown（轻量级标记语言）解析文章，输出美观的静态页面，安装环境：node.js和git1.检查mac是否安装好node.js和git（1） 打开终端node -vv7.10.0git —version2.5.4 (2) 使用npm(js包管理工具)下载Hexonpm install -g hexo-cli下载出错：checkPermis">
+<meta property="og:updated_time" content="2017-08-02T10:56:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="create_blog">
+<meta name="twitter:description" content="打造自己的独立博客一：安装Hexo高效的博客框架，用markdown（轻量级标记语言）解析文章，输出美观的静态页面，安装环境：node.js和git1.检查mac是否安装好node.js和git（1） 打开终端node -vv7.10.0git —version2.5.4 (2) 使用npm(js包管理工具)下载Hexonpm install -g hexo-cli下载出错：checkPermis">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="creat-create_blog" class="article article-type-creat" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/02/create_blog/" class="article-date">
+  <time datetime="2017-08-02T10:10:24.000Z" itemprop="datePublished">2017-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      create_blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="打造自己的独立博客"><a href="#打造自己的独立博客" class="headerlink" title="打造自己的独立博客"></a>打造自己的独立博客</h3><p>一：安装Hexo<br>高效的博客框架，用markdown（轻量级标记语言）解析文章，输出美观的静态页面，安装环境：node.js和git<br>1.检查mac是否安装好node.js和git<br>（1） 打开终端<br>node -v<br>v7.10.0<br>git —version<br>2.5.4</p>
+<p>(2) 使用npm(js包管理工具)下载Hexo<br>npm install -g hexo-cli<br>下载出错：checkPermissions Missing write access to /usr/local/lib/node_modules[写入权限限制]<br>解决方案：<br><a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions" target="_blank" rel="external">https://docs.npmjs.com/getting-started/fixing-npm-permissions</a><br>备注：通过命令把根目录都改为tony</p>
+<p>(3)建站<br>找到一个文件夹，workspace-blog<br>执行命令，新建一个网站blog<br>hexo init blog<br>cd blog<br>npm install</p>
+<p>建站完成后，会出现通用目录<br>_config.yml        －配置参数<br>package.json    －应用程序的信息，版本号等<br>scaffolds        －模版文件<br>source            －用户资源<br>    _drafts<br>    _posts<br>themes             －主题文件，Hexo根据主题文件来生成静态页面</p>
+<p>（4）写作<br>hexo new <title></title></p>
+<p>(5) 服务器<br>hexo-server</p>
+<p>搞不定：</p>
+<p>（6）配置git pages</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/02/create_blog/" data-id="cj5vvsceg0001hmgkmvyt2c85" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/02/create_blog/">create_blog</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
