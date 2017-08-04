@@ -196,11 +196,26 @@
 <p>比如sagas,通过定义其为全局变量，其的参数可以随时被访问</p>
 </blockquote>
 <p><img src="http://ou3u8hjzf.bkt.clouddn.com/170804_1_2.png" alt="闭包"></p>
-<h2 id="3-this关键词"><a href="#3-this关键词" class="headerlink" title="3. this关键词"></a>3. this关键词</h2><p>This是自动绑定到正确的对象上，大部分是以参数的形式出现<br>什么是正确的对象？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;</div><div class="line">		fn:<span class="keyword">function</span>(a,b)&#123;</div><div class="line">			<span class="built_in">log</span>(this);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="3-this关键词"><a href="#3-this关键词" class="headerlink" title="3. this关键词"></a>3. this关键词</h2><p>This是自动绑定到正确的对象上，大部分是以参数的形式出现。使用this可以节省内容<br>什么是正确的对象？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;</div><div class="line">		fn:<span class="keyword">function</span>(a,b)&#123;</div><div class="line">			<span class="built_in">log</span>(this);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.fn(3,4);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>fn(3,4)左边有’.’意味着fn函数是作为obj的属性被查找，当fn被调用，obj就是this绑定的内容<br>输入的值只有在函数执行时，才会与参数绑定<br>如果没有’.’来将this和内容绑定，那么JS会默认将this绑定为全局对象<br>使用JS内置的call方法来将this与指定的内容绑定, 在下面的例子中，this绑定r,输出{};<br>call 的优先级高于’.’<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var fn = <span class="keyword">function</span>(one,two)&#123;</div><div class="line">	<span class="built_in">log</span>(this,one,two);</div><div class="line">&#125;;</div><div class="line">var r=&#123;&#125;, g=&#123;&#125;, b=&#123;&#125;;</div><div class="line">r.method = fn;</div><div class="line"></div><div class="line">fn.call(r,g,b)</div></pre></td></tr></table></figure></p>
+<p>函数被调用时，如果没有值被传入，参数就会被绑定为underfined<br>“new”创建一个新的对象，而this也与新的对象绑定 </p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new r.method(g,b);</div></pre></td></tr></table></figure>
+<h2 id="4-原型链-Prototype-chain"><a href="#4-原型链-Prototype-chain" class="headerlink" title="4. 原型链(Prototype chain)"></a>4. 原型链(Prototype chain)</h2><p>原型链是创建与其它对象相似对象的一种机制，可以节省内存，避免重复代码</p>
+<h3 id="4-1-extend-方法"><a href="#4-1-extend-方法" class="headerlink" title="4.1 extend 方法"></a>4.1 extend 方法</h3><p>将一个对象中的所有属性都复制到另一个对象中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var gold = &#123;a:1&#125;;</div><div class="line"><span class="built_in">log</span>(gold.a);</div><div class="line">var blue = extend(&#123;&#125;,gold);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>复制行为只发生在程序执行中的某一个时间点，无法保持两个对象一直同步</p>
+</blockquote>
+<h3 id="4-2-Object-create"><a href="#4-2-Object-create" class="headerlink" title="4.2 Object.create()"></a>4.2 Object.create()</h3><p>Object.create()方法在 rose 和 gold 之间建立一种联系，如果在 rose 里无法查到某个方法，就会到 gold 去找，实现委托查找功能，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var rose = Object.create(gold);</div></pre></td></tr></table></figure>
+<p><img src="http://ou3u8hjzf.bkt.clouddn.com/170804_1_4.png" alt="原型链"></p>
+<blockquote>
+<p>所有对象都可以使用对象原型里所有属性和方法。所有数组都可以使用数组原型所有属性和方法。</p>
+</blockquote>
+<p><img src="http://ou3u8hjzf.bkt.clouddn.com/170804_1_5.png" alt="对象原型和数组原型"></p>
+<h2 id="5-对象修饰模式"><a href="#5-对象修饰模式" class="headerlink" title="5. 对象修饰模式"></a>5. 对象修饰模式</h2><p>重构、复用代码</p>
 
       
 
