@@ -224,13 +224,15 @@ $ npm install
 <h4 id="使用github的原因："><a href="#使用github的原因：" class="headerlink" title="使用github的原因："></a>使用github的原因：</h4><ol>
 <li>版本管理</li>
 <li>免费的托管空间<h4 id="如何使用SSH："><a href="#如何使用SSH：" class="headerlink" title="如何使用SSH："></a>如何使用SSH：</h4><blockquote>
-<ol>
-<li>首先查看本地电脑有没有公钥和私钥，一般在根目录下的隐藏文件里。<br>查看隐藏文件<br>ls －a</li>
-</ol>
+<p>首先查看本地电脑有没有公钥和私钥，一般在根目录下的隐藏文件里。</p>
 </blockquote>
 </li>
-<li>本地生成一对公钥和私钥<br> ssh-keygen -t rsa -C”276030405@qq.com”</li>
-<li>把公钥贴到github里： <a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a><br>目前这个公钥的邮箱是uniquecloud@gmail.com</li>
+</ol>
+<p>查看隐藏文件<br>    ls －a</p>
+<ol>
+<li>本地生成一对公钥和私钥<pre><code>ssh-keygen -t rsa -C&quot;276030405@qq.com&quot;
+</code></pre></li>
+<li>把公钥贴到<a href="https://github.com/settings/ssh" target="_blank" rel="external">github</a>里<br>目前这个公钥的邮箱是uniquecloud@gmail.com</li>
 </ol>
 <h2 id="4-Hexo部署"><a href="#4-Hexo部署" class="headerlink" title="4. Hexo部署"></a>4. Hexo部署</h2><h3 id="4-1-常用命令行："><a href="#4-1-常用命令行：" class="headerlink" title="4.1 常用命令行："></a>4.1 常用命令行：</h3><blockquote>
 <p>hexo help<br>hexo init 初始化一个目录<br>hexo new “postName” 新建文章<br>hexo new page “pageName” 新建页面<br>hexo generate 生成网页，在public目录查看整个网站的文件<br>hexo server 本地预览 ctrl＋c关闭<br>hexo deploy 部署 deploy 目录<br>hexo clean 清理缓存，建议每次执行命令前先清理缓存，每次部署前先删除.deploy文件夹</p>
@@ -238,9 +240,10 @@ $ npm install
 <ol>
 <li>准备工作：ssh设置好</li>
 <li>第一步，安装git插件：npm install hexo-deployer-git –save</li>
-<li>修改配置文件_config.yml<br> deploy:<pre><code>type: heroku
-repo: https://github.com/CherryXuQin/cherryxuqin.github.io.git
-branch: master
+<li>修改配置文件_config.yml<pre><code>deploy:
+      type: heroku
+      repo: https://github.com/CherryXuQin/cherryxuqin.github.io.git
+      branch: master
 </code></pre><h2 id="完成从本地hexo部署到个人github-page上。"><a href="#完成从本地hexo部署到个人github-page上。" class="headerlink" title="完成从本地hexo部署到个人github page上。"></a>完成从本地hexo部署到个人github page上。</h2></li>
 </ol>
 <h2 id="5-优化网页"><a href="#5-优化网页" class="headerlink" title="5. 优化网页"></a>5. 优化网页</h2><h3 id="5-1-更改Hexo主题"><a href="#5-1-更改Hexo主题" class="headerlink" title="5.1 更改Hexo主题"></a>5.1 更改Hexo主题</h3><p>复制主题配置到配置文件里，需要仔细检查，有没有重复的。</p>
