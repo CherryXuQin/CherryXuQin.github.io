@@ -20,7 +20,11 @@
 <meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170804_1_2.png">
 <meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170804_1_4.png">
 <meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170804_1_5.png">
-<meta property="og:updated_time" content="2017-08-04T10:37:03.000Z">
+<meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170805_1_3.png">
+<meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170805_1_2.png">
+<meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170807_1_1.png">
+<meta property="og:image" content="http://ou3u8hjzf.bkt.clouddn.com/170807_1_2.png">
+<meta property="og:updated_time" content="2017-08-07T10:01:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="划重点：JS 的一些疑难杂症（1）">
 <meta name="twitter:description" content="1. 作用域(Scope)1.1 Lexical Scope(词法作用域，在代码输入时被创建)1.1.1 Global Scope（全局变量）：程序中的任何位置都可以访问这个变量。1var hero = aHero();  JS里定义变量的语法是：var+变量名＋;  1.1.2 创建新的Lexical Scope  每当你定义一个函数，就会创建一个新的Lexical Scope“{“和”}”之间">
@@ -201,10 +205,12 @@
 <p>比如sagas,通过定义其为全局变量，其的参数可以随时被访问</p>
 </blockquote>
 <p><img src="http://ou3u8hjzf.bkt.clouddn.com/170804_1_2.png" alt="闭包"></p>
-<h2 id="3-this关键词"><a href="#3-this关键词" class="headerlink" title="3. this关键词"></a>3. this关键词</h2><p>This是自动绑定到正确的对象上，大部分是以参数的形式出现。使用this可以节省内容<br>什么是正确的对象？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;</div><div class="line">		fn:<span class="keyword">function</span>(a,b)&#123;</div><div class="line">			<span class="built_in">log</span>(this);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.fn(3,4);</div></pre></td></tr></table></figure>
+<h2 id="3-this关键词"><a href="#3-this关键词" class="headerlink" title="3. this关键词"></a>3. this关键词</h2><p>This是自动绑定到正确的对象上，大部分是以参数的形式出现。使用this可以节省内容<br>什么是正确的对象？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;</div><div class="line">		fn:<span class="keyword">function</span>(a,b)&#123;</div><div class="line">			<span class="built_in">log</span>(this);</div><div class="line">	&#125;</div><div class="line">&#125; </div><div class="line">obj.fn(3,4);</div></pre></td></tr></table></figure></p>
 <blockquote>
-<p>fn(3,4)左边有’.’意味着fn函数是作为obj的属性被查找，当fn被调用，obj就是this绑定的内容<br>输入的值只有在函数执行时，才会与参数绑定<br>如果没有’.’来将this和内容绑定，那么JS会默认将this绑定为全局对象<br>使用JS内置的call方法来将this与指定的内容绑定, 在下面的例子中，this绑定r,输出{};<br>call 的优先级高于’.’<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var fn = <span class="keyword">function</span>(one,two)&#123;</div><div class="line">	<span class="built_in">log</span>(this,one,two);</div><div class="line">&#125;;</div><div class="line">var r=&#123;&#125;, g=&#123;&#125;, b=&#123;&#125;;</div><div class="line">r.method = fn;</div><div class="line"></div><div class="line">fn.call(r,g,b)</div></pre></td></tr></table></figure></p>
+<p>fn(3,4)左边有’.’意味着fn函数是作为obj的属性被查找，当fn被调用，obj就是this绑定的内容<br>输入的值只有在函数执行时，才会与参数绑定<br>如果没有’.’来将this和内容绑定，那么JS会默认将this绑定为全局对象<br>使用JS内置的call方法来将this与指定的内容绑定, 在下面的例子中，this绑定r,输出{};<br>call 的优先级高于’.’</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var fn = <span class="keyword">function</span>(one,two)&#123;</div><div class="line">	<span class="built_in">log</span>(this,one,two);</div><div class="line">&#125;;</div><div class="line">var r=&#123;&#125;, g=&#123;&#125;, b=&#123;&#125;;</div><div class="line">r.method = fn;</div><div class="line"></div><div class="line">fn.call(r,g,b)</div></pre></td></tr></table></figure>
+<blockquote>
 <p>函数被调用时，如果没有值被传入，参数就会被绑定为underfined<br>“new”创建一个新的对象，而this也与新的对象绑定 </p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new r.method(g,b);</div></pre></td></tr></table></figure>
@@ -220,7 +226,47 @@
 <p>所有对象都可以使用对象原型里所有属性和方法。所有数组都可以使用数组原型所有属性和方法。</p>
 </blockquote>
 <p><img src="http://ou3u8hjzf.bkt.clouddn.com/170804_1_5.png" alt="对象原型和数组原型"></p>
-<h2 id="5-对象修饰模式"><a href="#5-对象修饰模式" class="headerlink" title="5. 对象修饰模式"></a>5. 对象修饰模式</h2><p>重构、复用代码</p>
+<h2 id="5-对象修饰模式"><a href="#5-对象修饰模式" class="headerlink" title="5. 对象修饰模式"></a>5. 对象修饰模式</h2><p>重构、复用代码,是JS的一种设计模式. 通常你可以用装饰器模式来向某个已拥有某些功能的对象添加功能</p>
+<h3 id="5-1-Decorate-Function"><a href="#5-1-Decorate-Function" class="headerlink" title="5.1 Decorate Function"></a>5.1 Decorate Function</h3><p>代码重构前<br><img src="http://ou3u8hjzf.bkt.clouddn.com/170805_1_3.png" alt="装饰器"><br>代码重构后<br><img src="http://ou3u8hjzf.bkt.clouddn.com/170805_1_2.png" alt="装饰器"></p>
+<h2 id="6-函数类"><a href="#6-函数类" class="headerlink" title="6. 函数类"></a>6. 函数类</h2><p>类是一个构造器，它能够创建大量遵从大致相同模式的相似对象。用类来创建需要装饰的对象.   </p>
+<blockquote>
+<p>定义类，首字母大写<br>类和实例：由类创建的对象，是类的实例。当我们调用构造函数来创建一个实例时，这个操作称为实例化。</p>
+</blockquote>
+<h2 id="7-原型类"><a href="#7-原型类" class="headerlink" title="7. 原型类"></a>7. 原型类</h2><p>如何创建类的实例？</p>
+<ol>
+<li><p>对象直接量创建对象，问题：你无法定义这个新对象的原型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var obj =&#123;loc:loc&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Object.create()，使用这种方法创建类的实例，可以定义新对象的原型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var obj = Object.create();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var Car = <span class="keyword">function</span>(loc)&#123;</div><div class="line">	var obj = Object.create(Car.methods);</div><div class="line">	obj.loc = loc;</div><div class="line">	returen obj;</div><div class="line">&#125;;</div><div class="line">Car.methods=&#123;</div><div class="line">	move: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	this.loc++;</div><div class="line">&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>首先，将Car.methods方法委托到Car的实例obj上。让obj的原型上有Car.methods方法。<br>之前的处理，是从Car.methods里复制所有的属性，现在的处理方式是我们只是简单的把这些实例对象<br>的字段查询委托给了Car.methods</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var Car = <span class="keyword">function</span>(loc)&#123;</div><div class="line">	// 声明实例obj，并且让obj能在Car.prototype里查询prototype的方法。</div><div class="line">	var obj = Object.create(Car.prototype); </div><div class="line">	obj.loc = loc;</div><div class="line">&#125;;</div><div class="line">// 伴随每个Car自动生成的方法容器对象是Car.prototype,并为Car添加move方法。</div><div class="line">Car.prototype.move = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	this.loc++;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Car、Car.prototype、amy(amy是Car的一个实例对象)三者之间的关系：<br>amy 的 prototype 是 Car.prototype<br>所有函数对象的字段查找都被委托到某个函数原型<br>Car 和 Car.prototype 之间的关系：当 Car 运行时，它将创建对象，这些对象将它们的字段查找委托到 Car.prototype</p>
+</blockquote>
+<p>.prototype 对象的特性<br>1、 拥有一个.constructor 属性，指向.右边的对象。<br>例如：Car.prototype.constructor = Car</p>
+<p>instanceof 方法<br>用来检查左边 .prototype是否是右边的prototype<br>amy instanceof Car //用来判断amy的prototype是否是Car.prototype</p>
+<h2 id="8-伪类模式"><a href="#8-伪类模式" class="headerlink" title="8. 伪类模式"></a>8. 伪类模式</h2><p>称为伪类是因为它仿造其它语言中的类系统，试图增加一些语法上的便利，有利于js引擎运行，优化代码</p>
+<h3 id="8-1-构造函数模式"><a href="#8-1-构造函数模式" class="headerlink" title="8.1 构造函数模式"></a>8.1 构造函数模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var ben = new Car(9); // 每当我们在函数前调用关键词new，该函数就会以构造模式来运行</div></pre></td></tr></table></figure>
+<p>何为构造模式？就是当看到new关键词，就会自动为函数对象补齐一部分代码,以下代码就是一个伪类。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 类的构造函数一般存储不同的属性和方法，比如loc，而类的prototype一般存储共有的方法。</div><div class="line">var Car = <span class="keyword">function</span>(loc)&#123;</div><div class="line">	this = Object.create(Car.prototype);   // 这一行是自动补齐的，不用写。 </div><div class="line">	this.loc = loc;</div><div class="line">	<span class="built_in">return</span> this;						   // 这一行也是自动补齐的，不用写。</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Car.prototype.move = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	this.loc++;							  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="9-超类和子类"><a href="#9-超类和子类" class="headerlink" title="9. 超类和子类"></a>9. 超类和子类</h2><p>具有部分相似属性和方法的对象，如何创建？<br>把相似部分筛出来作为父类，把每个对象的不同部分作为子类。</p>
+<h3 id="9-1-grab-和-call-方法"><a href="#9-1-grab-和-call-方法" class="headerlink" title="9.1 grab 和 call 方法"></a>9.1 grab 和 call 方法</h3><p>功能都一样，为对象添加方法</p>
+<h3 id="9-2-如何写超类和子类"><a href="#9-2-如何写超类和子类" class="headerlink" title="9.2 如何写超类和子类"></a>9.2 如何写超类和子类</h3><p><img src="http://ou3u8hjzf.bkt.clouddn.com/170807_1_1.png" alt="超类和子类"></p>
+<blockquote>
+<p>（1）构造超类 （2）构造子类 （3）在子类中调用超类</p>
+</blockquote>
+<h2 id="10-伪类子类"><a href="#10-伪类子类" class="headerlink" title="10. 伪类子类"></a>10. 伪类子类</h2><blockquote>
+<p>.call 方法允许我们在调用函数时，指定一个特定的执行环境。所以如何在伪类子类中调用超类的属性呢？只要为调用超类指定一个执行环境。Car.call(this, loc);</p>
+<p>在这个函数中，子类只调用了超类的.loc 属性，并没有调用Car.prototype.move方法。那么如果想要让子类继承超类的.move方法，怎么实现呢？<br>Van.prototype = Object.create(Car.prototype);表明如需找Van对象的prototype，则可以直接到Car.prototype里查询。<br>这样的委托，存在一个问题，就是Van.prototype.constructor 会被Car的覆盖掉。</p>
+<p>使用Van.prototype.constructor = Van;来为Van.prototype自身添加constructor;</p>
+<p>同时如果要为子类添加特定的方法，使用 Van.prototype.grab = function(){};<br><img src="http://ou3u8hjzf.bkt.clouddn.com/170807_1_2.png" alt="伪类子类和超类"></p>
+</blockquote>
 
       
 
