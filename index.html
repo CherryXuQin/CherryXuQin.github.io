@@ -159,6 +159,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ES6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/07/ES6/">ES6 有哪些新特性？</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/07/ES6/" class="archive-article-date">
+  	<time datetime="2017-08-07T10:14:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ES6-有哪些新特性？"><a href="#ES6-有哪些新特性？" class="headerlink" title="ES6 有哪些新特性？"></a>ES6 有哪些新特性？</h2><h2 id="1-Syntax-语法"><a href="#1-Syntax-语法" class="headerlink" title="1. Syntax (语法)"></a>1. Syntax (语法)</h2><h3 id="1-1-Let-and-Const"><a href="#1-1-Let-and-Const" class="headerlink" title="1.1 Let and Const"></a>1.1 Let and Const</h3><blockquote>
+<p>旧语法声明变量使用 var<br>当浏览器解释器执行js代码时，Function Scope里的变量会被优先提到函数最前面<br>let、const 和 var 的区别是： let 和 const 可以定义if、while里块的作用域（block scope）<br>let 的其它新特性：（1）可以重新给变量赋值，但该变量不能重新申明</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> instructor ＝ <span class="string">'James'</span>;</div><div class="line">instructor = <span class="string">'Richard'</span>;</div><div class="line">console.log(instructor); // Richard</div></pre></td></tr></table></figure>
+<blockquote>
+<p>const 声明时就要赋一个初始的值，并且不能重新赋值和声明<br>使用 let 和 const 来取代 var<br>object.slice(); slice 方法是从object里截取一段<br>let 和 const 使用场景1:一般情况使用const，条件语句和循环语句中的可变的变量用let</p>
+</blockquote>
+<h3 id="1-2-Template-Literals-模版字面量"><a href="#1-2-Template-Literals-模版字面量" class="headerlink" title="1.2 Template Literals(模版字面量)"></a>1.2 Template Literals(模版字面量)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 原来表达</div><div class="line"><span class="built_in">let</span> message = student.name+<span class="string">'please see'</span>+techer.name+<span class="string">'in'</span>+teacher.room+<span class="string">'to pick up your report card.'</span>;</div><div class="line"></div><div class="line">// 现在表达</div><div class="line"><span class="built_in">let</span> message = `<span class="variable">$&#123;student.name&#125;</span>please see <span class="variable">$&#123;teacher.name&#125;</span><span class="keyword">in</span><span class="variable">$&#123;teacher.room&#125;</span>to pick up your report card.`</div><div class="line"></div><div class="line">// 如果其中要换行，直接换行写即可</div></pre></td></tr></table></figure>
+<h3 id="1-3-Destructuring（解构赋值）"><a href="#1-3-Destructuring（解构赋值）" class="headerlink" title="1.3 Destructuring（解构赋值）"></a>1.3 Destructuring（解构赋值）</h3><p>解构赋值是JS的表达式，它的功能是能将值从数组或者属性从对象提取到不同的变量中<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="external">解构赋值</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> positions = [<span class="string">'Gabrielle'</span>,<span class="string">'Jarrod'</span>,<span class="string">'Kate'</span>,<span class="string">'Fernando'</span>,<span class="string">'Mike'</span>];</div><div class="line"><span class="built_in">let</span> [first,second,third] = position;</div><div class="line">console.log(second); //second 的值是Jarrod.</div><div class="line"></div><div class="line"></div><div class="line">const gemstone =&#123;</div><div class="line">	<span class="built_in">type</span>:<span class="string">'quartz'</span>,</div><div class="line">	color:<span class="string">'rose'</span>,</div><div class="line">	karat:<span class="string">'21.29'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">const &#123;<span class="built_in">type</span>,color,karat&#125;=gemstone;</div><div class="line">console.log(<span class="built_in">type</span>,color,karat); //prints:quartz rose 21.29</div></pre></td></tr></table></figure>
+<h3 id="1-4-对象字面量简写"><a href="#1-4-对象字面量简写" class="headerlink" title="1.4 对象字面量简写"></a>1.4 对象字面量简写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> <span class="built_in">type</span> = <span class="string">'quzrtz'</span>;</div><div class="line"><span class="built_in">let</span> color =<span class="string">'rose'</span>;</div><div class="line"><span class="built_in">let</span> carat = 21.29;</div><div class="line">//以下为旧规则</div><div class="line"><span class="built_in">let</span> gemstone-=&#123;</div><div class="line">	<span class="built_in">type</span>:<span class="built_in">type</span>,</div><div class="line">	color:color,</div><div class="line">	carat:carat,</div><div class="line">	calculateWorth:<span class="function"><span class="title">function</span></span>()&#123;...&#125;</div><div class="line">&#125;;</div><div class="line">//以下为新规则</div><div class="line"></div><div class="line"><span class="built_in">let</span> gemstone=&#123;</div><div class="line">				<span class="built_in">type</span>,</div><div class="line">				color,</div><div class="line">				carat,</div><div class="line">				<span class="function"><span class="title">calculateWorth</span></span>()&#123;...&#125;</div><div class="line"></div><div class="line">			&#125;;</div></pre></td></tr></table></figure>
+<h3 id="1-5-for-loop"><a href="#1-5-for-loop" class="headerlink" title="1.5  for loop"></a>1.5  for loop</h3><p>精简：for…of</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const digits = [0,1,2,3,4,5,6,7,8,9,];</div><div class="line"><span class="keyword">for</span>(<span class="built_in">let</span> digit of digits)&#123;</div><div class="line">	console.log(digit);	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>正则表达式：是用来匹配字符串中字符组合的模式<br>规则：</p>
+<ol>
+<li>／／ 是正则表达式的标志</li>
+<li>简单模式/abc/：/ /内纯字符，来判定字符串里是否包含abc的字符。</li>
+<li>使用特殊字符：<br>/( |^)[a-z]/g</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/07/ES6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-the-key-of-JS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -601,6 +693,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">进阶 JS</a>
